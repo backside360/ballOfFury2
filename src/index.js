@@ -1,5 +1,5 @@
-import Paddle from '/src/paddle.js';
-import Ball from '/src/ball.js';
+import Paddle from './paddle.js';
+import Ball from './ball.js';
 
 let canvas = document.getElementById('game');
 

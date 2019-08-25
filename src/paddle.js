@@ -9,7 +9,7 @@ export default class Paddle {
       y: gameHeight - this.height - 10
     };
 
-    this.speed = { x: 2, y: 0 };
+    this.speed = { x: 10, y: 0 };
   }
   draw(ctx) {
     let grd = ctx.createLinearGradient(
@@ -29,8 +29,8 @@ export default class Paddle {
     if (this.position.x + this.width > this.gW) {
       this.speed.x = -this.speed.x;
     }
-    if (this.position.x + this.width <= 0) {
-      this.speed.x = this.speed.x * -1;
+    if (this.position.x + this.width < 0) {
+      this.speed.x = -this.speed.x;
     }
   }
   init() {
