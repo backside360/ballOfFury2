@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Parcel Sandbox</title>
+    <title>Ball</title>
     <meta charset="UTF-8" />
     <link type="text/css" href="./src/styles.css" />
     <style>
+	   body {
+		overflow-x: hidden;
+	   }
       #game {
         background: url('https://uploads-ssl.webflow.com/5a924f57a44ab70001e8f433/5a9b11532c064e00011c56be_Graphics_04a%20Bokeh%20Background%20Pack%201.jpg');
         background-repeat: no repeat;
@@ -18,7 +21,7 @@
 
   <body>
     <img id="ball" src="src/img/tennis-ball--v4.png" />
-
+    <img id="brick" src='src/img/brick.png' />
     <canvas id="game"></canvas>
 
     <script src="./src/index.js" type="module"></script>

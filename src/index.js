@@ -1,5 +1,4 @@
-import Paddle from './paddle.js';
-import Ball from './ball.js';
+import Game from './game.js';
 
 let canvas = document.getElementById('game');
 
@@ -8,8 +7,12 @@ let ctx = canvas.getContext('2d');
 canvas.setAttribute('width', window.innerWidth);
 canvas.setAttribute('height', window.innerHeight);
 
-let paddle = new Paddle(window.innerWidth, window.innerHeight);
-let ball = new Ball(window.innerWidth, window.innerHeight);
+
+let game = new Game(window.innerWidth, window.innerHeight);
+game.start();
+
+
+
 
 let lastTime = 0;
 
@@ -18,11 +21,9 @@ const gameLoop = timestamp => {
   lastTime = timestamp;
 
   ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
-  paddle.draw(ctx);
-  paddle.update(dt);
-
-  ball.draw(ctx);
-  ball.update(dt);
+  
+  game.update(dt);
+  game.draw(ctx);
 
   requestAnimationFrame(gameLoop);
 };

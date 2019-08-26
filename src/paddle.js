@@ -1,40 +1,44 @@
 export default class Paddle {
-  constructor(gameWidth, gameHeight) {
-    this.width = gameWidth * 0.15;
+  constructor(game) {
+    this.gameWidth = game.gameWidth;
+    this.width = 150;
     this.height = 20;
-    this.gW = gameWidth;
-    this.ready = false;
+    this.speed = 0;
+    this.maxSpeed = 7;
+
     this.position = {
-      x: 0,
-      y: gameHeight - this.height - 10
+      x: game.gameWidth / 2 - this.width / 2,
+      y: game.gameHeight - this.height - 10
     };
 
-    this.speed = { x: 10, y: 0 };
+    
   }
+
+moveLeft() {
+  this.speed = -this.maxSpeed;
+}
+
+moveRight () {
+  this.speed = this.maxSpeed;
+}
+
+stop () {
+  this.speed = 0;
+}
+
   draw(ctx) {
-    let grd = ctx.createLinearGradient(
-      this.position.x - 5,
-      this.position.y - 5,
-      this.width,
-      this.height
-    );
-    grd.addColorStop(0, '#00ABEB');
-    grd.addColorStop(1, '#26C000');
-    ctx.fillStyle = grd;
+    ctx.fillStyle = '#00ABEB';
     ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
   }
-  update() {
-    this.position.x += this.speed.x;
+  update(dt) {
 
-    if (this.position.x + this.width > this.gW) {
-      this.speed.x = -this.speed.x;
-    }
-    if (this.position.x + this.width < 0) {
-      this.speed.x = -this.speed.x;
+    this.position.x += this.speed;
+
+    if (this.position.x < 0) this.position.x = 0; 
+
+
+    if (this.position.x + this.width > this.gameWidth) 
+    this.position.x = this.gameWidth - this.width; 
     }
   }
-  init() {
-    this.ready = true;
-    let img = new Image();
-  }
-}
+   
